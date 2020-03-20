@@ -10,18 +10,20 @@ import {environment} from '../environments/environment';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home.component';
 import {ChatbotComponent} from './chatbot.component';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ChatbotComponent
+    ChatbotComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
