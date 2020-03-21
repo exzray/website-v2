@@ -1,0 +1,16 @@
+.chatbot {
+  background: rgba(255, 255, 255, .65);
+}
+
+.chatbot-header {
+  background: white;
+}
+
+.chatbot-header .bot-name {
+  font-size: 1.4em;
+}
+
+.chatbot button {
+  width: 100px;
+  margin-left: 10px;
+}

@@ -1,1 +1,30 @@
-<p>chatbot works!</p>
+<div class="h-100 bg-light background-cover">
+  <div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+      <div class="h-100 py-2 py-md-5 col-md-8">
+        <div class="h-100 rounded shadow-lg chatbot">
+          <div class="d-flex flex-column h-100">
+            <div class="p-2 rounded-top chatbot-header font-family-baloo">
+              <i class="fas fa-2x fa-robot text-primary mr-2"></i>
+              <span class="bot-name mr-2">Reno Bot</span>
+              <small class="text-muted" *ngIf="typing">is typing...</small>
+            </div>
+            <div class="flex-fill p-3 font-family-saira">
+              <p *ngFor="let message of messages | async">
+                {{message.text}}
+              </p>
+            </div>
+            <div class="p-2 bg-white rounded-bottom font-family-baloo">
+              <div class="d-flex">
+                <label for="id_input"></label>
+                <input id="id_input" type="text" placeholder="your message" class="form-control"
+                       [(ngModel)]="text" (change)="sendMessage()">
+                <button class="btn btn-primary" (click)="sendMessage()">send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

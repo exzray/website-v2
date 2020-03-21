@@ -11,21 +11,26 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './home.component';
 import {ChatbotComponent} from './chatbot.component';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
+import { ChatbotItemComponent } from './chatbot-item.component';
+import {DialogFlowService} from './shared/services/dialog-flow.service';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ChatbotComponent,
+    ChatbotItemComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [DialogFlowService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
