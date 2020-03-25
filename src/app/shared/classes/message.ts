@@ -6,6 +6,8 @@ export class Message {
 }
 
 export class MessageButton {
+  public title: string;
+  public description: string;
   public label: string;
   public reply: string;
   public image: string;

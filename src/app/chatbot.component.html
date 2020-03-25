@@ -10,9 +10,9 @@
               <small class="text-muted" *ngIf="typing | async">is typing...</small>
             </div>
             <div class="flex-fill p-3 font-family-saira overflow-auto">
-              <p *ngFor="let message of messages | async">
-                {{message.text}}
-              </p>
+              <div *ngFor="let message of messages | async">
+                <app-chatbot-item [message]="message"></app-chatbot-item>
+              </div>
             </div>
             <div class="p-2 bg-white rounded-bottom font-family-baloo">
               <div class="d-flex">

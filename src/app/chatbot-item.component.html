@@ -1,1 +1,9 @@
-<p>chatbot-item works!</p>
+<div class="clearfix">
+  <div class="bg-white shadow-sm p-2 rounded d-inline-block mb-4"
+       [ngClass]="{'float-right': isHuman, 'ml-4':isHuman, 'mr-4':!isHuman}">
+    <small class="text-muted">
+      {{message.sender === 'human' ? 'You' : 'Reno bot'}}, say at {{message.created | date:'short'}}
+    </small>
+    <p class="mb-0" style="font-size: 1.2em">{{message.text}}</p>
+  </div>
+</div>
