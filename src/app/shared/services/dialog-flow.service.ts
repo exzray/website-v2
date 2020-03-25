@@ -1,8 +1,12 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {Message} from '../classes/message';
 import {scan} from 'rxjs/operators';
+
+import {ApiAiClient, IServerResponse} from 'api-ai-javascript/es6/ApiAiClient';
+import {v4 as uuidv4} from 'uuid';
+
+import {Message} from '../classes/message';
+import {environment} from '../../../environments/environment';
 
 
 @Injectable({
@@ -10,12 +14,70 @@ import {scan} from 'rxjs/operators';
 })
 export class DialogFlowService {
 
+  constructor() {
+    this.messages = new BehaviorSubject<Message[]>([]);
+    this.isWaiting = new BehaviorSubject<boolean>(false);
+
+    // check previous session id save in localStorage
+    this.sessionID = localStorage.getItem('dialog_flow_session_id');
+
+    // dialog flow require session id to keep session alive
+    if (!this.sessionID) {
+
+      this.sessionID = uuidv4();
+      console.log(`create new session id: ${this.sessionID}`);
+
+      // save created uuid to locaStorage
+      localStorage.setItem('dialog_flow_session_id', this.sessionID);
+
+    } else {
+      console.log(`start session with id: ${this.sessionID}`);
+    }
+
+    this.client = new ApiAiClient({accessToken: this.dialogFlowToken, sessionId: this.sessionID});
+  }
+
+  private readonly dialogFlowToken = environment.dialogFlow;
+  private readonly client;
+
   private readonly messages: BehaviorSubject<Message[]>;
   private readonly isWaiting: BehaviorSubject<boolean>;
 
-  constructor(private client: HttpClient) {
-    this.messages = new BehaviorSubject<Message[]>([]);
-    this.messages.subscribe(value => console.log(value));
+  private readonly sessionID: string;
+
+  private handleQueryResponse(promise: Promise<IServerResponse>) {
+    promise
+      .then(response => {
+        const messages: any[] = response.result.fulfillment.messages;
+
+        messages.forEach(value => {
+          const speech: string = value.speech;
+
+          if (speech.startsWith('payload:')) {
+            const jsonString: string = speech.substr(speech.indexOf(':') + 1);
+            const message: Message = JSON.parse(jsonString);
+            this.messages.next([message]);
+
+          } else {
+            this.botMessage(speech);
+          }
+        });
+
+        this.isWaiting.next(false);
+      })
+      .catch(reason => {
+        console.log(reason);
+        this.isWaiting.next(false);
+      });
+  }
+
+  public sendMessageQuery(text: string, updateUI = true) {
+    const userText = text;
+
+    // simulate bot typing
+    this.isWaiting.next(true);
+
+    this.handleQueryResponse(this.client.textRequest(text));
   }
 
   public userMessage(text: string) {
@@ -24,19 +86,24 @@ export class DialogFlowService {
     message.sender = 'human';
 
     this.messages.next([message]);
+
+    this.sendMessageQuery(text);
   }
 
   public botMessage(text: string) {
     const message: Message = new Message();
     message.text = text;
-    message.sender = 'human';
 
     this.messages.next([message]);
   }
 
-  public getObservableMessages(): Observable<Message[]> {
+  public getMessages(): Observable<Message[]> {
     return this.messages
       .asObservable()
       .pipe(scan((acc, value) => acc.concat(value)));
+  }
+
+  public getIsWaiting(): Observable<boolean> {
+    return this.isWaiting.asObservable();
   }
 }

@@ -11,26 +11,22 @@ import {DialogFlowService} from './shared/services/dialog-flow.service';
 export class ChatbotComponent implements OnInit {
 
   public messages: Observable<Message[]>;
-
-  public text: string;
-  public typing: boolean;
+  public typing: Observable<boolean>;
 
   constructor(private dialogflow: DialogFlowService) {
-    this.messages = dialogflow.getObservableMessages();
-
-    this.text = '';
-    this.typing = false;
+    this.messages = dialogflow.getMessages();
+    this.typing = dialogflow.getIsWaiting();
   }
 
   ngOnInit(): void {
   }
 
-  public sendMessage() {
+  public sendMessage(input: HTMLInputElement) {
     // must not empty text
-    if (this.text) {
-      this.dialogflow.userMessage(this.text);
+    if (input.value) {
+      this.dialogflow.userMessage(input.value);
     }
 
-    this.text = '';
+    input.value = '';
   }
 }

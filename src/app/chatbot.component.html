@@ -7,7 +7,7 @@
             <div class="p-2 rounded-top chatbot-header font-family-baloo">
               <i class="fas fa-2x fa-robot text-primary mr-2"></i>
               <span class="bot-name mr-2">Reno Bot</span>
-              <small class="text-muted" *ngIf="typing">is typing...</small>
+              <small class="text-muted" *ngIf="typing | async">is typing...</small>
             </div>
             <div class="flex-fill p-3 font-family-saira">
               <p *ngFor="let message of messages | async">
@@ -17,9 +17,11 @@
             <div class="p-2 bg-white rounded-bottom font-family-baloo">
               <div class="d-flex">
                 <label for="id_input"></label>
-                <input id="id_input" type="text" placeholder="your message" class="form-control"
-                       [(ngModel)]="text" (change)="sendMessage()">
-                <button class="btn btn-primary" (click)="sendMessage()">send</button>
+                <input #message_input id="id_input" type="text" placeholder="your message" class="form-control"
+                       [disabled]="typing | async"
+                       (change)="sendMessage(message_input)">
+                <button class="btn btn-primary" [disabled]="typing | async" (click)="sendMessage(message_input)">send
+                </button>
               </div>
             </div>
           </div>
