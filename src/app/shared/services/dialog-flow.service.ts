@@ -56,6 +56,7 @@ export class DialogFlowService {
           if (speech.startsWith('payload:')) {
             const jsonString: string = speech.substr(speech.indexOf(':') + 1);
             const message: Message = JSON.parse(jsonString);
+            console.log(message);
             this.messages.next([message]);
 
           } else {
