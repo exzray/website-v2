@@ -45,33 +45,6 @@ export class DialogFlowService {
 
   private readonly sessionID: string;
 
-  private handleQueryResponse(promise: Promise<IServerResponse>) {
-    promise
-      .then(response => {
-        const messages: any[] = response.result.fulfillment.messages;
-
-        messages.forEach(value => {
-          const speech: string = value.speech;
-
-          if (speech.startsWith('payload:')) {
-            const jsonString: string = speech.substr(speech.indexOf(':') + 1);
-            const message: Message = JSON.parse(jsonString);
-            console.log(message);
-            this.messages.next([message]);
-
-          } else {
-            this.botMessage(speech);
-          }
-        });
-
-        this.isWaiting.next(false);
-      })
-      .catch(reason => {
-        console.log(reason);
-        this.isWaiting.next(false);
-      });
-  }
-
   public sendMessageQuery(text: string) {
     // simulate bot typing
     this.isWaiting.next(true);
@@ -104,5 +77,47 @@ export class DialogFlowService {
 
   public getIsWaiting(): Observable<boolean> {
     return this.isWaiting.asObservable();
+  }
+
+  private handleQueryResponse(promise: Promise<IServerResponse>) {
+    promise
+      .then(response => {
+        const messages: any[] = response.result.fulfillment.messages;
+
+        messages.forEach(value => {
+          const speech: string = value.speech;
+
+          if (!speech) {
+            this.handleFirebaseError(response.result.resolvedQuery);
+          } else {
+            if (speech.startsWith('payload:')) {
+              const jsonString: string = speech.substr(speech.indexOf(':') + 1);
+              const message: Message = JSON.parse(jsonString);
+              console.log(message);
+              this.messages.next([message]);
+
+            } else {
+              this.botMessage(speech);
+            }
+
+            this.isWaiting.next(false);
+            this.playSound();
+          }
+        });
+      })
+      .catch(reason => {
+        console.log(reason);
+        this.isWaiting.next(false);
+      });
+  }
+
+  private handleFirebaseError(query: string) {
+    this.sendMessageQuery(query);
+  }
+
+  private playSound() {
+    const audio = new Audio('../../../assets/sound/notification.mp3');
+    audio.load();
+    audio.play().finally(() => console.log('play sound'));
   }
 }

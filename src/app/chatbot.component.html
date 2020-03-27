@@ -9,7 +9,7 @@
               <span class="bot-name mr-2">Reno Bot</span>
               <small class="text-muted" *ngIf="typing | async">is typing...</small>
             </div>
-            <div class="flex-fill p-3 font-family-saira overflow-auto">
+            <div class="flex-fill p-3 font-family-saira overflow-auto" appAutoScroll>
               <div *ngFor="let message of messages | async">
                 <app-chatbot-item [message]="message"></app-chatbot-item>
               </div>
