@@ -72,9 +72,7 @@ export class DialogFlowService {
       });
   }
 
-  public sendMessageQuery(text: string, updateUI = true) {
-    const userText = text;
-
+  public sendMessageQuery(text: string) {
     // simulate bot typing
     this.isWaiting.next(true);
 

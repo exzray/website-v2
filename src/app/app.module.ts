@@ -14,6 +14,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { ChatbotItemComponent } from './chatbot-item.component';
 import {DialogFlowService} from './shared/services/dialog-flow.service';
 import {FormsModule} from '@angular/forms';
+import { AutoScrollDirective } from './shared/directives/auto-scroll.directive';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {FormsModule} from '@angular/forms';
     HomeComponent,
     ChatbotComponent,
     ChatbotItemComponent,
+    AutoScrollDirective,
   ],
   imports: [
     BrowserModule,

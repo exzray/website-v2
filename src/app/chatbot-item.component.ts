@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Message} from './shared/classes/message';
+import {DialogFlowService} from './shared/services/dialog-flow.service';
 
 @Component({
   selector: 'app-chatbot-item',
@@ -12,12 +13,16 @@ export class ChatbotItemComponent implements OnInit {
 
   public isHuman: boolean;
 
-  constructor() {
+  constructor(private dialogflow: DialogFlowService) {
 
   }
 
   ngOnInit(): void {
     this.isHuman = (this.message.sender === 'human');
+  }
+
+  onClickReply(reply: string) {
+    this.dialogflow.userMessage(reply);
   }
 
 }
