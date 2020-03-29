@@ -19,6 +19,7 @@ export class ChatbotComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.dialogflow.botMessage('Hey, human! What i can help you?');
   }
 
   public sendMessage(input: HTMLInputElement) {
