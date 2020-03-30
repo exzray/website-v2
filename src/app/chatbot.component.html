@@ -15,6 +15,9 @@
             </div>
             <div class="p-2 bg-white rounded-bottom font-family-baloo">
               <div class="d-flex">
+                <button class="btn btn-outline-info ml-0 mr-2" [disabled]="typing | async" (click)="sendMessageMenu()">
+                  Menu
+                </button>
                 <label for="id_input"></label>
                 <input #message_input id="id_input" type="text" placeholder="your message" class="form-control"
                        [disabled]="typing | async"

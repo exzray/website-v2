@@ -30,4 +30,8 @@ export class ChatbotComponent implements OnInit {
 
     input.value = '';
   }
+
+  public sendMessageMenu() {
+    this.dialogflow.userMessage('menu');
+  }
 }
