@@ -140,6 +140,6 @@ export class DialogFlowService {
 
   private actionCheckEnquire() {
     this.enquireCol = this.firestore.collection(`enquires`, ref => ref.where('sessionID', '==', this.sessionID));
-    this.enquireCol.get().subscribe(snapshot => snapshot.docs.forEach(value => console.log(value)));
+    this.enquireCol.get().subscribe(snapshot => snapshot.docs.forEach(value => console.log(value.data())));
   }
 }
