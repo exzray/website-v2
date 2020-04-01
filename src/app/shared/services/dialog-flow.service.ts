@@ -7,6 +7,7 @@ import {v4 as uuidv4} from 'uuid';
 
 import {Message} from '../classes/message';
 import {environment} from '../../../environments/environment';
+import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 
 
 @Injectable({
@@ -14,7 +15,9 @@ import {environment} from '../../../environments/environment';
 })
 export class DialogFlowService {
 
-  constructor() {
+  private enquireCol: AngularFirestoreCollection;
+
+  constructor(private firestore: AngularFirestore) {
     this.messages = new BehaviorSubject<Message[]>([]);
     this.isWaiting = new BehaviorSubject<boolean>(false);
 
@@ -82,6 +85,8 @@ export class DialogFlowService {
   private handleQueryResponse(promise: Promise<IServerResponse>) {
     promise
       .then(response => {
+        this.handleAction(response);
+
         const messages: any[] = response.result.fulfillment.messages;
 
         messages.forEach(value => {
@@ -119,5 +124,25 @@ export class DialogFlowService {
     const audio = new Audio('../../../assets/sound/notification.mp3');
     audio.load();
     audio.play().finally(() => console.log('play sound'));
+  }
+
+  private handleAction(response: any) {
+    const actionName: string = response.result.action;
+
+    switch (actionName) {
+      case 'action_check_enquire':
+        this.actionCheckEnquire();
+        break;
+      case 'action_link_account':
+        break;
+    }
+  }
+
+  private actionCheckEnquire() {
+    console.log('check is running');
+    this.enquireCol = this.firestore.collection(`enquires`, ref => ref.where('sessionID', '==', this.sessionID));
+    this.enquireCol.get().subscribe(snapshot =>
+      snapshot.docs.forEach(value => console.log(value)))
+    ;
   }
 }

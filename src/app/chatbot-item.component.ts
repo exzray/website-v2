@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Message} from './shared/classes/message';
+import {Message, MessageButton} from './shared/classes/message';
 import {DialogFlowService} from './shared/services/dialog-flow.service';
 
 @Component({
@@ -21,8 +21,12 @@ export class ChatbotItemComponent implements OnInit {
     this.isHuman = (this.message.sender === 'human');
   }
 
-  onClickReply(reply: string) {
-    this.dialogflow.userMessage(reply);
+  onClickReply(button: MessageButton) {
+    this.dialogflow.userMessage(button.reply);
+
+    if (button.openUrl) {
+      window.open(button.openUrl, '_blank');
+    }
   }
 
 }
