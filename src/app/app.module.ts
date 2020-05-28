@@ -15,6 +15,7 @@ import { ChatbotItemComponent } from './chatbot-item.component';
 import {DialogFlowService} from './shared/services/dialog-flow.service';
 import {FormsModule} from '@angular/forms';
 import { AutoScrollDirective } from './shared/directives/auto-scroll.directive';
+import { ChatbotFloaterComponent } from './chatbot-floater.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AutoScrollDirective } from './shared/directives/auto-scroll.directive';
     HomeComponent,
     ChatbotComponent,
     ChatbotItemComponent,
+    ChatbotFloaterComponent,
     AutoScrollDirective,
   ],
   imports: [

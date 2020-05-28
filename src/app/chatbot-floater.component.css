@@ -1,0 +1,11 @@
+.chatbot-float {
+  display: inline-block;
+
+  position: sticky;
+
+  bottom: 40px;
+
+  background: whitesmoke;
+
+  padding: 10px;
+}

@@ -77,6 +77,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _chatbot_floater_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./chatbot-floater.component */ "./src/app/chatbot-floater.component.ts");
+
 
 
 
@@ -86,9 +88,10 @@ class AppComponent {
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(); };
-AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 1, vars: 0, template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 2, vars: 0, template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "router-outlet");
-    } }, directives: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterOutlet"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "app-chatbot-floater");
+    } }, directives: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterOutlet"], _chatbot_floater_component__WEBPACK_IMPORTED_MODULE_2__["ChatbotFloaterComponent"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AppComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -125,6 +128,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_services_dialog_flow_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./shared/services/dialog-flow.service */ "./src/app/shared/services/dialog-flow.service.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
 /* harmony import */ var _shared_directives_auto_scroll_directive__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./shared/directives/auto-scroll.directive */ "./src/app/shared/directives/auto-scroll.directive.ts");
+/* harmony import */ var _chatbot_floater_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./chatbot-floater.component */ "./src/app/chatbot-floater.component.ts");
+
 
 
 
@@ -156,6 +161,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjector
         _home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
         _chatbot_component__WEBPACK_IMPORTED_MODULE_8__["ChatbotComponent"],
         _chatbot_item_component__WEBPACK_IMPORTED_MODULE_10__["ChatbotItemComponent"],
+        _chatbot_floater_component__WEBPACK_IMPORTED_MODULE_14__["ChatbotFloaterComponent"],
         _shared_directives_auto_scroll_directive__WEBPACK_IMPORTED_MODULE_13__["AutoScrollDirective"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
         _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
         _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClientModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_2__["AngularFireModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_9__["AngularFirestoreModule"],
@@ -168,6 +174,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjector
                     _home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
                     _chatbot_component__WEBPACK_IMPORTED_MODULE_8__["ChatbotComponent"],
                     _chatbot_item_component__WEBPACK_IMPORTED_MODULE_10__["ChatbotItemComponent"],
+                    _chatbot_floater_component__WEBPACK_IMPORTED_MODULE_14__["ChatbotFloaterComponent"],
                     _shared_directives_auto_scroll_directive__WEBPACK_IMPORTED_MODULE_13__["AutoScrollDirective"],
                 ],
                 imports: [
@@ -182,6 +189,45 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjector
                 bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
             }]
     }], null, null); })();
+
+
+/***/ }),
+
+/***/ "./src/app/chatbot-floater.component.ts":
+/*!**********************************************!*\
+  !*** ./src/app/chatbot-floater.component.ts ***!
+  \**********************************************/
+/*! exports provided: ChatbotFloaterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatbotFloaterComponent", function() { return ChatbotFloaterComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+
+class ChatbotFloaterComponent {
+    constructor() {
+    }
+    ngOnInit() {
+    }
+}
+ChatbotFloaterComponent.ɵfac = function ChatbotFloaterComponent_Factory(t) { return new (t || ChatbotFloaterComponent)(); };
+ChatbotFloaterComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ChatbotFloaterComponent, selectors: [["app-chatbot-floater"]], decls: 3, vars: 0, consts: [[1, "chatbot-float"], ["href", "/chatbot"]], template: function ChatbotFloaterComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Chat Now");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } }, styles: [".chatbot-float[_ngcontent-%COMP%] {\r\n  display: inline-block;\r\n\r\n  position: -webkit-sticky;\r\n\r\n  position: sticky;\r\n\r\n  bottom: 40px;\r\n\r\n  background: whitesmoke;\r\n\r\n  padding: 10px;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2hhdGJvdC1mbG9hdGVyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxxQkFBcUI7O0VBRXJCLHdCQUFnQjs7RUFBaEIsZ0JBQWdCOztFQUVoQixZQUFZOztFQUVaLHNCQUFzQjs7RUFFdEIsYUFBYTtBQUNmIiwiZmlsZSI6InNyYy9hcHAvY2hhdGJvdC1mbG9hdGVyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2hhdGJvdC1mbG9hdCB7XHJcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG5cclxuICBwb3NpdGlvbjogc3RpY2t5O1xyXG5cclxuICBib3R0b206IDQwcHg7XHJcblxyXG4gIGJhY2tncm91bmQ6IHdoaXRlc21va2U7XHJcblxyXG4gIHBhZGRpbmc6IDEwcHg7XHJcbn1cclxuIl19 */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ChatbotFloaterComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-chatbot-floater',
+                templateUrl: './chatbot-floater.component.html',
+                styleUrls: ['./chatbot-floater.component.css']
+            }]
+    }], function () { return []; }, null); })();
 
 
 /***/ }),
