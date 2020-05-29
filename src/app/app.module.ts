@@ -16,6 +16,7 @@ import {DialogFlowService} from './shared/services/dialog-flow.service';
 import {FormsModule} from '@angular/forms';
 import { AutoScrollDirective } from './shared/directives/auto-scroll.directive';
 import { ChatbotFloaterComponent } from './chatbot-floater.component';
+import {AngularFireStorageModule} from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ChatbotFloaterComponent } from './chatbot-floater.component';
     AppRoutingModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
     AngularFirestoreModule,
     FormsModule
   ],

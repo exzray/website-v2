@@ -17,6 +17,14 @@ export class DialogFlowService {
 
   private enquireCol: AngularFirestoreCollection;
 
+  private readonly dialogFlowToken = environment.dialogFlow;
+  private readonly client;
+
+  private readonly messages: BehaviorSubject<Message[]>;
+  private readonly isWaiting: BehaviorSubject<boolean>;
+
+  private readonly sessionID: string;
+
   constructor(private firestore: AngularFirestore) {
     this.messages = new BehaviorSubject<Message[]>([]);
     this.isWaiting = new BehaviorSubject<boolean>(false);
@@ -40,13 +48,10 @@ export class DialogFlowService {
     this.client = new ApiAiClient({accessToken: this.dialogFlowToken, sessionId: this.sessionID});
   }
 
-  private readonly dialogFlowToken = environment.dialogFlow;
-  private readonly client;
 
-  private readonly messages: BehaviorSubject<Message[]>;
-  private readonly isWaiting: BehaviorSubject<boolean>;
-
-  private readonly sessionID: string;
+  public getSessionID(): string {
+    return this.sessionID;
+  }
 
   public sendMessageQuery(text: string) {
     // simulate bot typing
