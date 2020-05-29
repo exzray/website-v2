@@ -14,3 +14,13 @@
   width: 100px;
   margin-left: 10px;
 }
+
+.chatbot-floater {
+  display: inline-block;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 40px;
+  background: white;
+}
+
