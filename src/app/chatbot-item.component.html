@@ -10,8 +10,7 @@
     <div class="row rounded p-1 bg-white" *ngIf="message.buttons">
       <div class="col-md-6 py-1 pb-1" *ngFor="let button of message.buttons">
         <img src="{{button.image}}" *ngIf="button.image" alt="" class="img-fluid"/>
-        <button class="btn btn-danger btn-sm mt-1 btn-block" [disabled]="!button.reply"
-                (click)="onClickReply(button)">{{button.label}}
+        <button class="btn btn-danger btn-sm mt-1 btn-block" *ngIf="button.reply" (click)="onClickReply(button)">{{button.label}}
         </button>
       </div>
     </div>
