@@ -386,9 +386,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 
-    function ChatbotItemComponent_div_8_div_1_img_1_Template(rf, ctx) {
+    function ChatbotItemComponent_div_8_div_1_img_2_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "img", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "img", 12);
       }
 
       if (rf & 2) {
@@ -398,29 +398,47 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
-    function ChatbotItemComponent_div_8_div_1_Template(rf, ctx) {
+    function ChatbotItemComponent_div_8_div_1_button_3_Template(rf, ctx) {
       if (rf & 1) {
-        var _r32 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r34 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 13);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, ChatbotItemComponent_div_8_div_1_img_1_Template, 1, 1, "img", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ChatbotItemComponent_div_8_div_1_button_3_Template_button_click_0_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r34);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "button", 10);
+          var button_r28 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ChatbotItemComponent_div_8_div_1_Template_button_click_2_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r32);
+          var ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          var button_r28 = ctx.$implicit;
-
-          var ctx_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
-
-          return ctx_r31.onClickReply(button_r28);
+          return ctx_r32.onClickReply(button_r28);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var button_r28 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", button_r28.label, " ");
+      }
+    }
+
+    function ChatbotItemComponent_div_8_div_1_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 8);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 9);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, ChatbotItemComponent_div_8_div_1_img_2_Template, 1, 1, "img", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, ChatbotItemComponent_div_8_div_1_button_3_Template, 2, 1, "button", 11);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -430,15 +448,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("href", button_r28.image, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", button_r28.image);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", !button_r28.reply);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", button_r28.label, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", button_r28.reply);
       }
     }
 
@@ -506,7 +524,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       },
       decls: 9,
       vars: 12,
-      consts: [[1, "clearfix", "mb-3"], [1, "bg-white", "shadow-sm", "p-2", "rounded", "d-inline-block", "mb-2", 3, "ngClass"], [1, "text-muted"], [1, "mb-0", 2, "font-size", "1.2em"], [1, "p-2"], ["class", "row rounded p-1 bg-white", 4, "ngIf"], [1, "row", "rounded", "p-1", "bg-white"], ["class", "col-md-6 py-1 pb-1", 4, "ngFor", "ngForOf"], [1, "col-md-6", "py-1", "pb-1"], ["alt", "", "class", "img-fluid", 3, "src", 4, "ngIf"], [1, "btn", "btn-danger", "btn-sm", "mt-1", "btn-block", 3, "disabled", "click"], ["alt", "", 1, "img-fluid", 3, "src"]],
+      consts: [[1, "clearfix", "mb-3"], [1, "bg-white", "shadow-sm", "p-2", "rounded", "d-inline-block", "mb-2", 3, "ngClass"], [1, "text-muted"], [1, "mb-0", 2, "font-size", "1.2em"], [1, "p-2"], ["class", "row rounded p-1 bg-white", 4, "ngIf"], [1, "row", "rounded", "p-1", "bg-white"], ["class", "col-md-6 py-1 pb-1", 4, "ngFor", "ngForOf"], [1, "col-md-6", "py-1", "pb-1"], ["target", "_blank", 3, "href"], ["alt", "", "class", "img-fluid", 3, "src", 4, "ngIf"], ["class", "btn btn-danger btn-sm mt-1 btn-block", 3, "click", 4, "ngIf"], ["alt", "", 1, "img-fluid", 3, "src"], [1, "btn", "btn-danger", "btn-sm", "mt-1", "btn-block", 3, "click"]],
       template: function ChatbotItemComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -693,10 +711,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "sendMessage",
         value: function sendMessage() {
-          if (this.message.length !== 0) {
-            this.dialogflow.userMessage(this.message);
-          }
-
+          this.dialogflow.userMessage(this.message);
           this.message = '';
         }
       }, {

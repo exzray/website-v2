@@ -26,9 +26,7 @@ export class ChatbotComponent implements OnInit {
   }
 
   public sendMessage() {
-    if (this.message.length !== 0) {
-      this.dialogflow.userMessage(this.message);
-    }
+    this.dialogflow.userMessage(this.message);
     this.message = '';
   }
 

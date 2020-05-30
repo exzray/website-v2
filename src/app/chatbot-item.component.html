@@ -9,7 +9,7 @@
   <div class="p-2">
     <div class="row rounded p-1 bg-white" *ngIf="message.buttons">
       <div class="col-md-6 py-1 pb-1" *ngFor="let button of message.buttons">
-        <img src="{{button.image}}" *ngIf="button.image" alt="" class="img-fluid"/>
+        <a target="_blank" href="{{button.image}}"><img src="{{button.image}}" *ngIf="button.image" alt="" class="img-fluid"/></a>
         <button class="btn btn-danger btn-sm mt-1 btn-block" *ngIf="button.reply" (click)="onClickReply(button)">{{button.label}}
         </button>
       </div>
